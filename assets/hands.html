@@ -1,0 +1,33 @@
+<section class="hands-console" aria-label="자비스 공간 인터페이스">
+  <header class="hands-title"><h2>JARVIS.</h2><div class="system-state"><i></i><b data-ref="mode">꺼짐</b></div></header>
+  <div class="hud-toolbar"><button data-action="start">시스템 연결</button><button data-action="stop" hidden>연결 종료</button><button data-action="pause" hidden>손동작 멈춤</button></div>
+  <div class="spatial-stage" data-ref="surface">
+    <div class="hud-grid"></div>
+    <div class="hands-camera" data-ref="preview" hidden><video data-ref="camera" autoplay muted playsinline></video><canvas data-ref="canvas" width="640" height="480"></canvas></div>
+    <div class="jarvis-reactor" data-ref="reactor" data-state="idle" aria-hidden="true">
+      <svg viewBox="0 0 320 320" class="reactor-svg"><defs><radialGradient id="core-glow"><stop stop-color="#73f5ff" stop-opacity=".24"/><stop offset="1" stop-color="#73f5ff" stop-opacity="0"/></radialGradient></defs><circle cx="160" cy="160" r="146" fill="url(#core-glow)"/><g class="orbit-a"><circle cx="160" cy="160" r="137" stroke-dasharray="180 22 65 18"/><circle cx="160" cy="160" r="124" stroke-dasharray="2 10"/></g><g class="orbit-b"><circle cx="160" cy="160" r="111" stroke-dasharray="92 28"/><path d="M160 42v14 M160 264v14 M42 160h14 M264 160h14"/></g><circle cx="160" cy="160" r="91"/><circle class="core-ring" cx="160" cy="160" r="74"/><path class="core-mark" d="M128 147v26l32 18 32-18v-26l-32-18Z M128 147l32 18 32-18 M160 165v26"/></svg>
+      <div class="reactor-caption" data-ref="phase">대기 중</div>
+    </div>
+    <div class="command-deck" data-ref="deck">
+      <button data-command="0" class="hud-target target-0"><span>01</span><strong>오늘 브리핑</strong><small>일정과 우선순위</small></button>
+      <button data-command="1" class="hud-target target-1"><span>02</span><strong data-ref="voice-label">말하기</strong><small>다시 집으면 녹음 종료</small></button>
+      <button data-command="2" class="hud-target target-2"><span>03</span><strong>확인 후 실행</strong><small>문장 · 검토한 계획</small></button>
+      <button data-command="3" class="hud-target target-3"><span>04</span><strong>취소 · 중단</strong><small>입력 취소 / 음성 중단</small></button>
+    </div>
+    <div class="spatial-cursor" data-ref="cursor-left" data-side="left" hidden><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20"/><circle class="cursor-charge" cx="24" cy="24" r="20"/></svg><i></i><b>L</b></div>
+    <div class="spatial-cursor" data-ref="cursor-right" data-side="right" hidden><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20"/><circle class="cursor-charge" cx="24" cy="24" r="20"/></svg><i></i><b>R</b></div>
+    <div class="hud-pulse" data-ref="pulse" hidden></div>
+        <div class="hands-tracking" data-ref="tracking">손바닥을 펴서 불러오고, 손끝으로 가리킨 뒤 집으세요. ✊ 녹음 종료 · 👍 실행 · 👎 취소 · 🤟 목표 · ✊✊ 멈춤.</div>
+  </div>
+  <div class="status-line"><span class="status-dot"></span><p data-ref="status" role="status" aria-live="polite">시스템을 연결하면 손끝이 커서가 됩니다. 메뉴 위에서 엄지와 검지를 맞대세요. 양손이 각각 커서가 됩니다.</p></div>
+  <div class="hands-meter" role="progressbar" aria-label="선택 유지 시간" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i data-ref="progress"></i></div><div class="hands-audio-level"><i data-ref="volume"></i></div>
+  <div class="hands-manual"><button data-action="listen">말하기</button><button data-action="finish" disabled>녹음 종료</button><button data-action="accept" disabled>확인 후 실행</button><button data-action="cancel">취소</button></div>
+  <div class="hands-draft" data-ref="draft" hidden><label>전송할 내용 <textarea data-ref="transcript" maxlength="6000" rows="3" placeholder="인식된 문장을 확인하세요."></textarea></label><p>검토 후 ‘확인 후 실행’을 가리키고 집어서 실행합니다.</p></div>
+  <details class="mission-composer" data-ref="mission-editor"><summary>목표 설계</summary><label><input type="checkbox" data-ref="plan-mode"> 말한 목표를 계획으로 설계</label><label>목표<textarea data-ref="goal" rows="2" maxlength="6000" placeholder="이번 주 면접 준비를 실행 가능한 단계로 나눠 줘"></textarea></label><button data-action="plan">계획 설계하기</button></details>
+  <div class="mission-review" data-ref="mission" hidden><span class="mission-eyebrow">검토 후 등록해 주세요</span><h3 data-ref="plan-summary"></h3><p data-ref="plan-caution"></p><ol data-ref="plan-items"></ol><button data-action="confirm-plan">검토한 계획 전체 등록</button><button data-action="dismiss-plan">계획 닫기</button></div>
+  <ol class="agent-trace" data-ref="trace" aria-label="처리 진행 상황" hidden></ol>
+  <div class="utility-row"><button data-action="voice">마이크만 연결</button><button data-action="read">답변 듣기</button></div>
+  <label class="hands-speaking"><input type="checkbox" data-ref="speak" checked> 음성으로 답변 <span>AI 음성</span></label><audio data-ref="audio" controls hidden></audio>
+  <details class="hands-guide"><summary>입력 조정 및 사용 안내</summary><p>손바닥을 펼치면 컨트롤이 나타납니다. 검지로 원하는 메뉴를 가리킨 뒤 엄지와 검지를 집고 잠깐 유지하세요. 손가락을 벌려야 다음 선택을 할 수 있습니다. 양손을 동시에 쓸 수 있고, 각 손이 독립된 커서를 가집니다.</p><p class="pose-note">가리키지 않고 바로 쓰는 단축 동작 — 잠깐 유지하면 실행됩니다.</p><dl class="pose-list"><dt>🖐</dt><dd>컨트롤 불러오기</dd><dt>✊</dt><dd>녹음 중이면 종료</dd><dt>👍</dt><dd>확인 후 실행</dd><dt>👎</dt><dd>취소 · 음성 중단</dd><dt>🤟</dt><dd>목표 설계 켜기</dd><dt>✊✊</dt><dd>양 주먹 · 손동작 멈춤 / 다시 시작</dd></dl><label>선택 유지 시간 <output data-ref="hold-label">0.6초</output><input data-ref="hold" type="range" min="400" max="1600" step="50" value="600"></label><label>집기 감도 <output data-ref="pinch-label">25%</output><input data-ref="pinch" type="range" min="15" max="40" step="1" value="25"></label><label>손바닥 인식 기준 <output data-ref="confidence-label">65%</output><input data-ref="confidence" type="range" min="50" max="90" step="5" value="65"></label><p>촬영 거리와 손 각도에 따라 감도를 조절하세요. 녹음은 최대 45초. 이미 실행한 작업은 취소로 되돌리지 않으며 결과가 대화에 남습니다.</p></details>
+  <p class="hands-help privacy-note">손 영상은 기기에서만 처리합니다. 음성은 녹음 종료 시 OpenAI로 전송하며 원본 파일은 저장하지 않습니다.</p>
+</section>

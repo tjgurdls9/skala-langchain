@@ -1,0 +1,7 @@
+gradio==6.28.0
+langchain-ollama==1.1.0
+langchain-openai==1.6.2
+langchain==1.4.2
+openai==3.16.2
+pypdf==6.1.1
+python-dotenv==1.2.3
